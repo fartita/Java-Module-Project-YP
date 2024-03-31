@@ -11,6 +11,6 @@ public class Calculator {
             allPrice = listItems.get(i).getRight() + allPrice;
         }
         Double sumPerPerson = allPrice/guests;
-        System.out.printf("Каждый заплатит %.2f%n", sumPerPerson);
+        System.out.printf("Каждый заплатит %.2f%n рубля", sumPerPerson);
     }
 }
