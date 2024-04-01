@@ -10,8 +10,8 @@ public class Main {
         while(true){
             System.out.println("Введите товар");
             String name = scanner.next();
-            System.out.println("Введите стоимость");
-            Double cost  = scanner.nextDouble();
+            System.out.println("Введите стоимость, цену введите дробную с точкой");
+            Double cost  = insertDouble(scanner);
             calc.listItems.add(new Pair(name, cost));
             System.out.println("Товар успешно добавлен, завершить подсчет?");
             String answer = scanner.next();
@@ -24,10 +24,10 @@ public class Main {
     }
 
     public static int getGuests(Scanner scanner){
-        int count = -1;
+        int count;
         while(true){
             System.out.println("Сколько гостей?");
-            count = scanner.nextInt();
+            count = insertCount(scanner);
             if(count <= 1){
                 System.out.println("Некорректное значение для подсчета");
             }
@@ -38,4 +38,28 @@ public class Main {
         return count;
     }
 
+    public static int insertCount(Scanner scanner){
+        int count;
+        try{
+                count = Integer.parseInt(scanner.nextLine());
+        }
+        catch (Exception e){
+                System.out.println("Введите целочисленное");
+                count = insertCount(scanner);
+        }
+        return count;
+    }
+
+    public static Double insertDouble(Scanner scanner){
+        double count;
+        try{
+            scanner.nextLine();
+            count = Double.parseDouble(scanner.nextLine());
+        }
+        catch (Exception e){
+                System.out.println("Введите дробное число с точкой");
+                count = insertDouble(scanner);
+        }
+        return count;
+    }
 }

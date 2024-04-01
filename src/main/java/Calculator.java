@@ -7,10 +7,33 @@ public class Calculator {
         Double allPrice = 0.0;
         System.out.println("Добавленные товары:\n");
         for(int i = 0; i < listItems.size(); i++){
-            System.out.println(listItems.get(i).getLeft()+"\n");
+            System.out.printf("%s, стоит %.2f %s\n",listItems.get(i).getLeft(), listItems.get(i).getRight(), printRoubles(listItems.get(i).getRight()));
             allPrice = listItems.get(i).getRight() + allPrice;
         }
         Double sumPerPerson = allPrice/guests;
-        System.out.printf("Каждый заплатит %.2f%n рубля", sumPerPerson);
+        String roubles = printRoubles(sumPerPerson);
+        System.out.printf("Каждый заплатит %.2f %s", sumPerPerson, roubles);
+    }
+
+    private String printRoubles(Double dChislo){
+        String rouble;
+        String chislo = String.format("%.2f", dChislo);
+        if(chislo.charAt(2) == '1'){
+            return "рублей";
+        }
+        switch(chislo.charAt(3)){
+            case '1':
+                rouble = "рубль";
+                break;
+            case '2':
+            case '3':
+            case '4':
+                rouble = "рубля";
+                break;
+            default:
+                rouble = "рублей";
+                break;
+        }
+        return rouble;
     }
 }
