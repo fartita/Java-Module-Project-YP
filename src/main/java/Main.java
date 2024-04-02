@@ -11,6 +11,7 @@ public class Main {
             System.out.println("Введите товар");
             String name = scanner.next();
             System.out.println("Введите стоимость, цену введите дробную с точкой");
+            scanner.nextLine();
             Double cost  = insertDouble(scanner);
             calc.listItems.add(new Pair(name, cost));
             System.out.println("Товар успешно добавлен, завершить подсчет?");
@@ -53,11 +54,14 @@ public class Main {
     public static Double insertDouble(Scanner scanner){
         double count;
         try{
-            scanner.nextLine();
+
             count = Double.parseDouble(scanner.nextLine());
+            if(count < 0){
+                throw new Exception("Negative Double");
+            }
         }
         catch (Exception e){
-                System.out.println("Введите дробное число с точкой");
+                System.out.println("Введите положительное дробное число с точкой");
                 count = insertDouble(scanner);
         }
         return count;

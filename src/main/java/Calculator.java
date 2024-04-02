@@ -17,11 +17,13 @@ public class Calculator {
 
     private String printRoubles(Double dChislo){
         String rouble;
-        String chislo = String.format("%.2f", dChislo);
-        if(chislo.charAt(2) == '1'){
-            return "рублей";
+        String chislo = String.format("%.2f", dChislo).split(",")[0];
+        if(chislo.length() > 1){
+            if(chislo.charAt(chislo.length()-2) == '1'){
+                return "рублей";
+            }
         }
-        switch(chislo.charAt(3)){
+        switch(chislo.charAt(chislo.length()-1)){
             case '1':
                 rouble = "рубль";
                 break;
